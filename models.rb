@@ -1,4 +1,4 @@
-DataMapper.setup(:default, 'postgres://fgsayuybcutpkn:ziUz0_jrFLLPmfY47YosYPYgBx@ec2-23-21-161-153.compute-1.amazonaws.com:5432/d90hei5ctjbumd')
+DataMapper.setup(:default, ENV['POSTGRES_STRING'])
 
 class Post
   include DataMapper::Resource
