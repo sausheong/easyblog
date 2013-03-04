@@ -1,0 +1,16 @@
+%section
+  .container.content
+    - @posts.reverse.each do |post|
+      %row
+        .span12
+          %h3.text-info
+            %i.icon-bookmark-empty
+            =post.heading
+          %small.muted
+            =post.timestamp.strftime "%e %b %Y, %I:%M %P"
+          %small.pull-right.text-info
+            %a{href: post.link}=post.username
+          %p
+            =markdown post.content
+
+      %hr

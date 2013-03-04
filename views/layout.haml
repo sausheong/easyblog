@@ -1,0 +1,21 @@
+!!! 1.1
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title EasyBlog
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0'}
+    %link{rel: 'stylesheet', href: '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css', type: 'text/css'}
+    %link{rel: 'stylesheet', href: '//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css', type:  'text/css'}
+    %link{rel: 'stylesheet', href: '//twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css', type:  'text/css'}
+    %link{rel: 'stylesheet', href: '//twitter.github.com/bootstrap/assets/css/docs.css', type:  'text/css'}
+    %script{type: 'text/javascript', src: "//code.jquery.com/jquery-1.9.1.min.js"}
+    
+    %script{type: 'text/javascript', src: "//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"}
+
+  %body
+    
+    =toolbar
+    =yield
+    
+    %br
+    %footer
+      %p.footer &copy; Chang Sau Sheong 2013

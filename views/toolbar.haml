@@ -1,0 +1,36 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .navbar-inner
+    .container
+
+      %button.btn.btn-navbar.collapsed{'data-toggle' => 'collapse', 'data-target' => '.nav-collapse'}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
+      %ul.nav
+        %a.brand{href:"/"} EasyBlog
+
+      .nav-collapse        
+        %ul.nav
+          - if session[:user]
+            %li
+              %a{href: '/post/new'} 
+                %i.icon-plus-sign-alt
+                New Post            
+
+
+        %ul.nav.pull-right
+          - if session[:user]
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", 'data-toggle' => 'dropdown' }
+                %i.icon-user
+                =session[:user]['name']
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => '/logout'} Sign out
+          - else
+            %li
+              %a{:href => '/auth'} 
+                %i.icon-facebook-sign
+                Sign in

@@ -1,0 +1,9 @@
+%fieldset
+  %label
+    %strong Heading
+  %input.span8{type: 'text', name: 'heading', placeholder: 'Type your post heading here', value: @post.heading}
+  
+  %label
+    %strong Content
+  %textarea.span8{name: 'content', placeholder: 'Type your post here', rows: 10}
+    =@post.content
