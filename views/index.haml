@@ -7,9 +7,11 @@
             %i.icon-bookmark-empty
             =post.heading
           %small.muted
-            =post.timestamp.strftime "%e %b %Y, %I:%M %P"
-          %small.pull-right.text-info
+            by
             %a{href: post.userlink}=post.username
+            on
+            =post.timestamp.strftime "%e %b %Y, %I:%M %P"
+            
           %p
             =markdown post.content
 
