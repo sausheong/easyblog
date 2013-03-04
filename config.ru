@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'bundler'
-require './easyblog'
-
 Bundle.require
+
+require './easyblog'
 run Sinatra::Application
