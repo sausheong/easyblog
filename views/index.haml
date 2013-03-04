@@ -9,7 +9,7 @@
           %small.muted
             =post.timestamp.strftime "%e %b %Y, %I:%M %P"
           %small.pull-right.text-info
-            %a{href: post.link}=post.username
+            %a{href: post.userlink}=post.username
           %p
             =markdown post.content
 
