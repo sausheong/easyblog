@@ -53,6 +53,7 @@ post "/post" do
 end
 
 get '/auth' do  
+  p "*** auth: #{request.scheme}://#{request.host}:#{request.port}/auth/callback"
   RestClient.get "https://www.facebook.com/dialog/oauth",
                     params: {client_id: ENV['FACEBOOK_APP_ID'], 
                              redirect_uri: "#{request.scheme}://#{request.host}:#{request.port}/auth/callback"}
@@ -60,6 +61,7 @@ end
 
 get '/auth/callback' do
   if params['code']
+    p "*** callback: #{request.scheme}://#{request.host}:#{request.port}/auth/callback"
     resp = RestClient.get("https://graph.facebook.com/oauth/access_token",
                       params: {client_id: ENV['FACEBOOK_APP_ID'],
                                client_secret: ENV['FACEBOOK_APP_SECRET'],
