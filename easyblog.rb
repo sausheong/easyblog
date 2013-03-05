@@ -39,6 +39,9 @@ get "/" do
   page = params[:page] || 1
   page_size = params[:page_size] || 5
   @posts = Post.all(order: :created_at.desc).page(page: page, per_page: page_size)
+  @posts_by_month = Post.all.group_by do |post|
+    post.created_at.strftime("%B, %Y")
+  end
   haml :index
 end
 

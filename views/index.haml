@@ -1,21 +1,29 @@
 %section
   .container.content
-    .span8
-      - @posts.each do |post|
-        %h3.text-info
-          %i.icon-bookmark-empty
-          =post.heading
-        %small.muted
-          by
-          %a{href: post.userlink}=post.username
-          on
-          =post.created_at.strftime "%e %b %Y, %I:%M %P"
+    .row
+      .span8
+        - @posts.each do |post|
+          %h3.text-info
+            %i.icon-bookmark-empty
+            =post.heading
+          %small.muted
+            by
+            %a{href: post.userlink}=post.username
+            on
+            =post.created_at.strftime "%e %b %Y, %l:%M %P %Z"
       
-        %p
-          =markdown post.content
+          %p
+            =markdown post.content
 
-        %hr
-      .pagination
-        =@posts.pager.to_html("/")    
+          %hr
+        .pagination
+          =@posts.pager.to_html("/")    
+      .span3.offset1.hidden-tablet.hidden-phone
+        %h3 Posts by month
+        %ul
+        - @posts_by_month.each do |month, posts|
+          %li
+            %a{href:'/'}
+              #{month} (#{posts.count})
     
       
