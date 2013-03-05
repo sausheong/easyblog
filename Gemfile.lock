@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.2.8)
     bcrypt-ruby (3.0.1)
+    daemons (1.1.9)
     data_objects (0.10.12)
       addressable (~> 2.1)
     datamapper (1.2.0)
@@ -54,6 +55,7 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.12)
       data_objects (= 0.10.12)
+    eventmachine (1.0.0)
     fastercsv (1.5.5)
     haml (4.0.0)
       tilt
@@ -72,6 +74,10 @@ GEM
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
     stringex (1.5.1)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     tilt (1.3.4)
     uuidtools (2.1.3)
 
@@ -87,3 +93,4 @@ DEPENDENCIES
   redcarpet
   rest-client
   sinatra
+  thin

@@ -1,6 +1,7 @@
 %w(sinatra haml data_mapper rest_client json redcarpet).each do |gem|
   require gem
 end
+require './settings'
 require './models'
 
 configure do
