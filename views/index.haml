@@ -1,7 +1,7 @@
 %section
   .container.content
     .span8
-      - @posts.reverse.each do |post|
+      - @posts.each do |post|
         %h3.text-info
           %i.icon-bookmark-empty
           =post.heading
