@@ -9,7 +9,7 @@
           by
           %a{href: post.userlink}=post.username
           on
-          =post.timestamp.strftime "%e %b %Y, %I:%M %P"
+          =post.created_at.strftime "%e %b %Y, %I:%M %P"
       
         %p
           =markdown post.content

@@ -38,7 +38,7 @@ end
 get "/" do
   page = params[:page] || 1
   page_size = params[:page_size] || 5
-  @posts = Post.all(order: :timestamp.desc).page(page: page, per_page: page_size)
+  @posts = Post.all(order: :created_at.desc).page(page: page, per_page: page_size)
   haml :index
 end
 

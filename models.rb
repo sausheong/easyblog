@@ -3,7 +3,7 @@ DataMapper.setup(:default, ENV['POSTGRES_STRING'])
 class Post
   include DataMapper::Resource
   property :id, Serial
-  property :timestamp, DateTime, default: Time.now
+  property :created_at, DateTime
   property :heading, String, length: 255
   property :content, Text
   
