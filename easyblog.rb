@@ -35,7 +35,9 @@ error RuntimeError do
 end
 
 get "/" do
-  @posts = Post.all
+  page = params[:page] || 1
+  page_size = params[:page_size] || 5
+  @posts = Post.all(order: :timestamp.desc).page(page: page, per_page: page_size)
   haml :index
 end
 
