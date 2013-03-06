@@ -1,0 +1,6 @@
+%h3 Posts by month
+%ul
+- posts.each do |month, posts|
+  %li
+    %a{href:'/'}
+      #{month} (#{posts.count})

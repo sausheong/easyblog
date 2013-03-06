@@ -1,0 +1,16 @@
+%section
+  .container.content
+    %h1 
+      %i.icon-plus-sign-alt
+      Edit Post
+    
+    .row
+      .span12
+        %form{method: 'post', action: '/post'}
+          %p.text-info.lead
+            Modify your post below.
+          =snippet :'post/_fields'
+          %input{type: 'hidden', name: 'id', value: @post.id}
+          .form-actions
+            %input.btn.btn-primary{type: 'submit', value: 'Modify'}
+            %a.btn{href:'/'} Cancel

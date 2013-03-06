@@ -7,6 +7,22 @@ class Post
   property :heading, String, length: 255
   property :content, Text
   
-  property :username, String
-  property :userlink, String  
+  property :user_name, String
+  property :user_link, String  
+  
+  has n, :comments
 end
+
+class Comment
+  include DataMapper::Resource
+  property :id, Serial
+  property :created_at, DateTime
+  property :content, Text
+  
+  property :user_pic_url, URI
+  property :user_name, String
+  property :user_link, String  
+  property :user_facebook_id, String
+  
+  belongs_to :post
+end  
