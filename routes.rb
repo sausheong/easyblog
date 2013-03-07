@@ -27,23 +27,40 @@ get "/post/view/:id" do
 end
 
 get "/post/new" do
-  must_login
+  must_login and must_in_whitelist
   @post = Post.new
   haml :'post/new'
 end
 
 get "/post/edit/:id" do
-  must_login
+  must_login and must_in_whitelist
   @post = Post.get params[:id]
   raise 'Cannot find this post' unless @post
   haml :'post/edit'
 end
 
-post "/post" do
+delete "/post" do
+  must_login and must_in_whitelist
+  post = Post.get params[:id]
+  raise "You didn't write this post so you can't remove it." unless post.user_facebook_id == session[:user]['id']
+  post.destroy
+  redirect "/"
+end
+
+delete "/comment" do
   must_login
+  comment = Comment.get params[:id]
+  raise "You didn't write this comment so you can't remove it." unless comment.user_facebook_id == session[:user]['id']
+  comment.destroy
+  redirect "/"
+end
+
+
+post "/post" do
+  must_login and must_in_whitelist
   unless post = Post.get(params[:id])
     post = Post.new
-    post.user_name, post.user_link = session[:user]['name'], session[:user]['link']    
+    post.user_facebook_id, post.user_name, post.user_link = session[:user]['id'], session[:user]['name'], session[:user]['link']    
   end
   post.heading, post.content = params['heading'], params['content']
   post.save
@@ -61,7 +78,7 @@ post "/comment" do
   end
     comment.content = params['content']
     comment.save
-    redirect "/post/#{post.id}"
+    redirect "/post/view/#{post.id}"
 end
 
 
@@ -78,8 +95,8 @@ get '/auth/callback' do
                                client_secret: ENV['FACEBOOK_APP_SECRET'],
                                redirect_uri: "#{request.scheme}://#{request.host}:#{request.port}/auth/callback",
                                code: params['code']})                                           
-    access_token = resp.split("=")[1]
-    user = RestClient.get("https://graph.facebook.com/me?access_token=#{access_token}&fields=picture,name,username,link,timezone")
+    session[:access_token] = resp.split("&")[0].split("=")[1]
+    user = RestClient.get("https://graph.facebook.com/me?access_token=#{session[:access_token]}&fields=picture,name,username,link,timezone")
     session[:user] = JSON.parse user
     redirect "/"
   end

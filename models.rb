@@ -9,8 +9,13 @@ class Post
   
   property :user_name, String
   property :user_link, String  
+  property :user_facebook_id, String
   
-  has n, :comments
+  has n, :comments, constraint: :destroy
+  
+  def is_owned_by(user)
+    self.user_facebook_id == user['id']
+  end
 end
 
 class Comment

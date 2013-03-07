@@ -3,7 +3,20 @@
     %h1 
       %i.icon-bookmark
       =@post.heading
-    
+      - if @post.is_owned_by session[:user]
+        %span
+          %small.muted
+            %form#delete{method: 'post', action: '/post'}
+              %input{type: 'hidden', name: 'id', value: @post.id}
+              %input{type: 'hidden', name: '_method', value: 'delete'}
+              %a{href:"/post/edit/#{@post.id}"}
+                %i.icon-pencil
+                edit
+              &middot;
+              %a{href:"#", onclick: "$('#delete').submit();"}
+                %i.icon-remove
+                delete
+     
     .row
       .span12
         %br

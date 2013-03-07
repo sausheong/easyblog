@@ -13,7 +13,7 @@
 
       .nav-collapse        
         %ul.nav
-          - if session[:user]
+          - if session[:user] and WHITELIST.include?(session[:user]['username'])
             %li
               %a{href: '/post/new'} 
                 %i.icon-plus-sign-alt

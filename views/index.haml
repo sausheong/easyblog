@@ -1,36 +1,39 @@
 %section
   .container.content
-    .row
-      .span8
-        - @posts.each do |post|
-          %h3.text-info
-            %a{href: "/post/view/#{post.id}"}
-              %i.icon-bookmark-empty
-              =post.heading
-            &nbsp;
-            - if session[:user]
-              %small
-                %a{href:"/post/edit/#{post.id}"}
-                  %i.icon-pencil
-                  edit
+    - if @posts.empty?
+      %h2 There are no posts yet.
+    - else
+      .row
+        .span9
+          - @posts.each do |post|
+            %h3.text-info
+              %a{href: "/post/view/#{post.id}"}
+                %i.icon-bookmark-empty
+                =post.heading
+              &nbsp;
+              - if session[:user] and post.is_owned_by(session[:user])
+                %small
+                  %a{href:"/post/edit/#{post.id}"}
+                    %i.icon-pencil
+                    edit
 
-          %small.muted
-            by
-            %a{href: post.user_link}=post.user_name
-            on
-            =post.created_at.strftime "%e %b %Y, %l:%M %P"
-            &nbsp; &middot; &nbsp;
-            #{post.comments.size} comments
+            %small.muted
+              by
+              %a{href: post.user_link}=post.user_name
+              on
+              =post.created_at.strftime "%e %b %Y, %l:%M %P"
+              &nbsp; &middot; &nbsp;
+              #{post.comments.size} comments
       
-          %p
-            =markdown post.content            
+            %p
+              =markdown post.content            
           
-          - unless post.id == @posts.last.id
-            %hr
+            - unless post.id == @posts.last.id
+              %hr
           
-        .pagination
-          =@posts.pager.to_html("/")    
-      .span3.offset1.hidden-tablet.hidden-phone
-        =snippet(:'sidebar/_posts_by_month', locals: {posts: @posts_by_month})
+          .pagination
+            =@posts.pager.to_html("/")    
+        .span3.hidden-tablet.hidden-phone
+          =snippet(:'sidebar/_posts_by_month', locals: {posts: @posts_by_month})
     
       
