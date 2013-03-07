@@ -3,7 +3,7 @@
     %h1 
       %i.icon-bookmark
       =@post.heading
-      - if @post.is_owned_by session[:user]
+      - if @post.is_owned_by(session[:user])
         %span
           %small.muted
             %form#delete{method: 'post', action: '/post'}
