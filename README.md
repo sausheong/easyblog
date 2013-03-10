@@ -4,7 +4,7 @@ EasyBlog is an attempt to create a minimalist and extensible blog for Rubyists. 
 
 The entire server app is in a single file `easyblog.rb`. All other files are in the views folder, which (of course), has all the view templates.
 
-Made with Ruby using Sinatra, HAML and DataMapper. Dressed with Twitter Bootcamp and a dash of Font Awesome. Finally with a sprinkle of Bootswatch themes. Served while hot.
+Made with Ruby using Sinatra, HAML and DataMapper. Dressed with Twitter Bootcamp and a dash of Font Awesome. Finally with a sprinkle of Bootswatch themes. Served while hot at http://easyblog.herokuapp.com
 
 Enjoy.
 
