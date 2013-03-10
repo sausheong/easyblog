@@ -209,19 +209,15 @@ __END__
     color: #fff;
   }
 
-
 @@ error
 %section
   .container.content.center      
     %h1.text-error.text-center
       %i.icon-warning-sign
       Oops, there's been an error. 
-
     %br
-        
     %p.lead.text-center
       =@error
-
 
 @@ toolbar
 .navbar.navbar-inverse.navbar-fixed-top
@@ -244,7 +240,6 @@ __END__
               %a{href: '/post/new'} 
                 %i.icon-plus-sign-alt
                 New Post            
-
 
         %ul.nav.pull-right
           - if session[:user]
@@ -301,7 +296,6 @@ __END__
         .span3.hidden-tablet.hidden-phone
           =snippet(:'sidebar/_posts_by_month', locals: {posts: @posts_by_month})
     
-
 @@ post/_fields
 %fieldset
   %label
@@ -330,6 +324,7 @@ __END__
           .form-actions
             %input.btn.btn-primary{type: 'submit', value: 'Modify'}
             %a.btn{href:'/'} Cancel
+
 @@ post/new
 %section
   .container.content
