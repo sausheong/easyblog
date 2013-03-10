@@ -1,7 +1,3 @@
-%w(sinatra haml data_mapper rest_client json redcarpet).each do |gem|
-  require gem
-end
-
 # settings
 BOOTSTRAP_THEME = ENV['BOOTSTRAP_THEME'] || '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css'
 BLOG_NAME = ENV['BLOG_NAME'] || 'EasyBlog'
