@@ -204,6 +204,10 @@ __END__
   body > .navbar .brand {
     color: #fff;
   }
+  body {
+    font-size: 18px;
+    line-height: 22px;
+  }
 
 @@ error
 %section
