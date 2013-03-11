@@ -206,7 +206,7 @@ __END__
   }
   body {
     font-size: 18px;
-    line-height: 22px;
+    line-height: 24px;
   }
 
 @@ error
