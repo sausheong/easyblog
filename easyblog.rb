@@ -1,7 +1,7 @@
 # settings
 BOOTSTRAP_THEME = ENV['BOOTSTRAP_THEME'] || '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css'
 BLOG_NAME = ENV['BLOG_NAME'] || 'EasyBlog'
-WHITELIST = ENV['WHITELIST'].split(',') || []
+WHITELIST = (ENV['WHITELIST'].nil? || ENV['WHITELIST'].empty? ? [] : ENV['WHITELIST'].split(','))
 
 # helper module
 module EasyHelper
@@ -30,7 +30,7 @@ module EasyHelper
 end
 
 # models
-DataMapper.setup(:default, ENV['POSTGRES_STRING'])
+DataMapper.setup(:default, ENV['DATABASE_URL'])
 
 class Post
   include DataMapper::Resource
@@ -70,6 +70,9 @@ configure do
   enable :inline_templates
   set :session_secret, ENV['SESSION_SECRET'] ||= 'sausheong_secret_stuff'
   set :show_exceptions, false
+  
+  # installation steps  
+  DataMapper.auto_upgrade! unless DataMapper.repository(:default).adapter.storage_exists?('post')
 end
 
 helpers EasyHelper
@@ -220,7 +223,7 @@ __END__
       =@error
 
 @@ toolbar
-.navbar.navbar-inverse.navbar-fixed-top
+.navbar.navbar-fixed-top
   .navbar-inner
     .container
 
