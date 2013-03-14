@@ -8,10 +8,12 @@ puts "============================"
 puts "This script will install EasyBlog into Heroku. You will be asked for:"
 puts "1. A Heroku API key, which you can get from https://dashboard.heroku.com/account once you sign up for an account"
 puts "2. A Facebook application ID and application secret, which you can from https://developers.facebook.com/apps once you create a Facebook application"
+puts "3. A comma-delimited list of Facebook user names you want to be contributors to your blog (any one can comment if they also log in, but only this whitelist of contributors will be able to post)"
 puts
 heroku_api = ask("Please enter your Heroku API key:  ") { |q| q.echo = "x" }
 facebook_app_id = ask("Enter your Facebook App ID:  ") { |q| q.echo = "x" }
 facebook_app_secret = ask("Enter your Facebook App Secret:  ") { |q| q.echo = "x" }
+whitelist = ask("Enter a comma-delimited list of contributors (no spaces before or after comma):  ")
 
 # installation script executes from here
 heroku_url = "https://:#{heroku_api}@api.heroku.com/apps"
@@ -27,9 +29,9 @@ addon = JSON.parse response
 puts "Postgres DB is #{addon['status']}"
 
 # Set the configurations
-config = {'FACEBOOK_APP_ID' => facebook_app_id, 'FACEBOOK_APP_SECRET' => facebook_app_secret}
+config = {'FACEBOOK_APP_ID' => facebook_app_id, 'FACEBOOK_APP_SECRET' => facebook_app_secret, 'WHITELIST' => whitelist}
 response = RestClient.put "#{heroku_url}/#{app['name']}/config_vars", config.to_json, "Accept"=>"application/json"
-puts "Facebook configurations set."
+puts "Configurations set."
 
 # Push the code up to Heroku
 system "git remote add heroku #{app['git_url']}"
