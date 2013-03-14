@@ -209,7 +209,10 @@ __END__
 
 :css
   body { font-size: 20px; line-height: 26px; }
-
+  li {line-height: 1.4em}
+  li > a {text-decoration: underline; }
+  textarea {font-size: 0.9em; font-family: "Courier New", Courier, monospace; line-height: 1.1em; color: black;}
+  
 @@ error
 %section
   .container.content.center      
