@@ -59,6 +59,7 @@ GEM
     fastercsv (1.5.5)
     haml (4.0.0)
       tilt
+    highline (1.6.15)
     json (1.7.7)
     json_pure (1.7.7)
     mime-types (1.21)
@@ -91,6 +92,7 @@ DEPENDENCIES
   dm-timestamps (= 1.2.0)
   do_postgres (= 0.10.12)
   haml (= 4.0.0)
+  highline (= 1.6.15)
   json (= 1.7.7)
   redcarpet (= 2.2.2)
   rest-client (= 1.6.7)
