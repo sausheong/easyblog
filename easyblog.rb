@@ -201,16 +201,13 @@ __END__
     
     %br
     %footer
-      %p.mute.footer &copy; Chang Sau Sheong 2013
+      %p.mute.footer 
+        %small &copy; 
+          %a{href:'http://about.me/sausheong'} Chang Sau Sheong 
+          2013
 
 :css
-  body > .navbar .brand {
-    color: #fff;
-  }
-  body {
-    font-size: 18px;
-    line-height: 24px;
-  }
+  body { font-size: 20px; line-height: 26px; }
 
 @@ error
 %section
