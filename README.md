@@ -12,6 +12,12 @@ Made with Ruby using Sinatra, HAML and DataMapper. Dressed with Twitter Bootcamp
 
 Enjoy.
 
+Here's the list of Easy apps in the same suite:
+
+* EasyBlog - http://github.com/sausheong/easyblog
+* EasyWiki - http://github.com/sausheong/easywiki
+* EasyForum - http://github.com/sausheong/easyforum
+
 # Installation and setting up your own blog
 
 You need these few things.
